@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animate-gradient-move {
+    animation: gradient-move 8s ease-in-out infinite alternate;
+    background-size: 200% 200%;
+  }
+  @keyframes gradient-move {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+  .animate-fade-in {
+    opacity: 0;
+    animation: fade-in 1s ease forwards;
+  }
+  .animate-fade-in.delay-100 { animation-delay: 0.1s; }
+  .animate-fade-in.delay-200 { animation-delay: 0.2s; }
+  .animate-fade-in.delay-300 { animation-delay: 0.3s; }
+  .animate-fade-in.delay-400 { animation-delay: 0.4s; }
+  .animate-fade-in.delay-500 { animation-delay: 0.5s; }
+  @keyframes fade-in {
+    to {
+      opacity: 1;
+    }
+  }
+  .animate-spin-slow {
+    animation: spin 10s linear infinite;
+  }
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .animate-float-slow {
+    animation: float-slow 6s ease-in-out infinite;
+  }
+  @keyframes float-slow {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    50% {
+      transform: translateY(-20px) rotate(5deg);
+    }
+  }
+  .animate-blob1 {
+    animation: blob1 18s ease-in-out infinite alternate;
+  }
+  .animate-blob2 {
+    animation: blob2 22s ease-in-out infinite alternate;
+  }
+  .animate-blob3 {
+    animation: blob3 26s ease-in-out infinite alternate;
+  }
+  @keyframes blob1 {
+    0% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(40px, -30px) scale(1.1); }
+    100% { transform: translate(0,0) scale(1); }
+  }
+  @keyframes blob2 {
+    0% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(-60px, 40px) scale(1.15); }
+    100% { transform: translate(0,0) scale(1); }
+  }
+  @keyframes blob3 {
+    0% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(30px, 30px) scale(0.95); }
+    100% { transform: translate(0,0) scale(1); }
+  }
+  .animate-particle1 {
+    animation: particle1 12s linear infinite alternate;
+  }
+  .animate-particle2 {
+    animation: particle2 16s linear infinite alternate;
+  }
+  .animate-particle3 {
+    animation: particle3 20s linear infinite alternate;
+  }
+  @keyframes particle1 {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-40px) scale(1.2); }
+  }
+  @keyframes particle2 {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(30px) scale(0.8); }
+  }
+  @keyframes particle3 {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(-20px) scale(1.1); }
+  }
+}
